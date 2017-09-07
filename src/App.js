@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import 'material-components-web/dist/material-components-web.min.css';
+import { connect } from 'react-redux'
+//import { bindActionCreators } from 'redux'
+
+//import * as actions from '../redux/actions/index'
 import Textfield from './components/Textfield'
+import TestForm from './components/TestForm'
 
 class App extends Component {
 
@@ -12,7 +17,14 @@ class App extends Component {
         name: '',
         description: ''
     }
-}
+
+    
+  }
+
+  submit = (values) => {
+    // print the form values to the console
+    console.log(values)
+  }
 
   render() {
     return (
@@ -33,9 +45,11 @@ class App extends Component {
                     }}
                 />
 
+                <TestForm onSubmit={this.submit}/>
+
       </div>
     );
   }
 }
 
-export default App;
+export default connect()(App);
